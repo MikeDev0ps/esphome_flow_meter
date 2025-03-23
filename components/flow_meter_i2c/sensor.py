@@ -10,7 +10,7 @@ flow_ns = cg.esphome_ns.namespace('flow_meter_i2c')
 FlowMeter = flow_ns.class_('FlowMeter', cg.Component, i2c.I2CDevice)
 Calibration = flow_ns.class_('Calibration', cg.Component, number.Number, i2c.I2CDevice)
 
-CONFIG_SCHEMA = sensor.SENSOR_SCHEMA.extend({
+CONFIG_SCHEMA = sensor.POLLING_SENSOR_SCHEMA.extend({
     cv.GenerateID(): cv.declare_id(FlowMeter),
 }).extend(cv.COMPONENT_SCHEMA).extend(i2c.i2c_device_schema(0x10))
 
